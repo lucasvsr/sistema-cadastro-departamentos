@@ -4,18 +4,17 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import ifpe.web3.projeto.unid2.service.DepartamentoService;
+import ifpe.web3.projeto.unid2.service.FuncionarioService;
 
 @Named
 @RequestScoped
-public class DepartamentoController {
+public class FuncionarioController {
 
 	@Inject
-	private DepartamentoService service;
+	private FuncionarioService service;
 
-	public DepartamentoService getService() {
+	public FuncionarioService getService() {
 		return service;
 	}
-	
 
 }

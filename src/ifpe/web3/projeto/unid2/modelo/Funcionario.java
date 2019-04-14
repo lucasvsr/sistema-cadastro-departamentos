@@ -2,7 +2,8 @@ package ifpe.web3.projeto.unid2.modelo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -39,14 +41,17 @@ public class Funcionario extends AbstractEntity<Long> implements Serializable {
 	
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
-	private Calendar dataEntrada;
+	private Date dataEntrada;
 	
 	@Temporal(TemporalType.DATE)
-	private Calendar dataSaida;
+	private Date dataSaida;
 	
 	@ManyToOne
 	@JoinColumn(name="cargo_id_fk")
 	private Cargo cargo;
+	
+	@OneToMany(mappedBy = "funcionario")
+	private List<PontoEletronico> pontos;
 
 	public Funcionario() {
 		super();
@@ -65,18 +70,18 @@ public class Funcionario extends AbstractEntity<Long> implements Serializable {
 	public void setSalario(BigDecimal salario) {
 		this.salario = salario;
 	}   
-	public Calendar getDataEntrada() {
+	public Date getDataEntrada() {
 		return this.dataEntrada;
 	}
 
-	public void setDataEntrada(Calendar dataEntrada) {
+	public void setDataEntrada(Date dataEntrada) {
 		this.dataEntrada = dataEntrada;
 	}   
-	public Calendar getDataSaida() {
+	public Date getDataSaida() {
 		return this.dataSaida;
 	}
 
-	public void setDataSaida(Calendar dataSaida) {
+	public void setDataSaida(Date dataSaida) {
 		this.dataSaida = dataSaida;
 	}
 	
@@ -87,5 +92,13 @@ public class Funcionario extends AbstractEntity<Long> implements Serializable {
 	public void setCargo(Cargo cargo) {
 		this.cargo = cargo;
 	}
-   
+	
+	public List<PontoEletronico> getPontos() {
+		return pontos;
+	}
+	
+	public void setPontos(List<PontoEletronico> pontos) {
+		this.pontos = pontos;
+	}
+
 }
