@@ -3,14 +3,21 @@ package ifpe.web3.projeto.unid2.service;
 import java.util.List;
 
 import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 
 @Dependent
 public abstract class AbstractService<T> {
 
-	@Inject
+	
 	private EntityManager manager;
+	
+	public AbstractService() {
+		
+		if(manager == null)
+		manager = Persistence.createEntityManagerFactory("sistema-cadastro-departamento").createEntityManager();
+
+	}
 
 	public boolean salvar(T obj) {
 

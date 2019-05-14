@@ -30,7 +30,7 @@ import org.hibernate.validator.constraints.NotBlank;
 })
 @SuppressWarnings("serial")
 @Entity
-@Table(name="Cargos")
+@Table(name="cargos")
 public class Cargo extends AbstractEntity<Long> implements Serializable {
 
 	@NotBlank(message = "O nome do cargo é obrigatório.")
@@ -40,7 +40,7 @@ public class Cargo extends AbstractEntity<Long> implements Serializable {
 	
 	@NotNull(message = "Selecione o departamento relativo ao cargo.")
 	@ManyToOne
-	@JoinColumn(name = "id_departamento_fk")
+	@JoinColumn(name = "cargo_departamento")
 	private Departamento departamento;
 	
 	@OneToMany(mappedBy = "cargo")

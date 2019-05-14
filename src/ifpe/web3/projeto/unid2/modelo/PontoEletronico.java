@@ -24,7 +24,7 @@ import ifpe.web3.projeto.unid2.enums.TipoPonto;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="ponto_eletronico")
+@Table(name = "ponto_eletronico")
 public class PontoEletronico extends AbstractEntity<Long> implements Serializable {
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

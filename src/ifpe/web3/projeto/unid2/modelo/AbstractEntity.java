@@ -6,14 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.SequenceGenerator;
 
 @SuppressWarnings("serial")
 @MappedSuperclass
-@SequenceGenerator(name="entidade_seq", sequenceName="entidade_seq", allocationSize = 1)
 public abstract class AbstractEntity<ID extends Serializable> implements Serializable {
 	
-	@Id @GeneratedValue(strategy = GenerationType.AUTO, generator = "entidade_seq")
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private ID id;
 
 	public ID getId() {

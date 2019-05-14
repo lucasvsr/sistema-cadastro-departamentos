@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,7 +31,7 @@ import javax.persistence.TemporalType;
 })
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "Funcionarios")
+@Table(name = "funcionarios")
 public class Funcionario extends AbstractEntity<Long> implements Serializable {
 
 	@Column(nullable = false)
@@ -39,19 +40,26 @@ public class Funcionario extends AbstractEntity<Long> implements Serializable {
 	@Column(nullable = false)
 	private BigDecimal salario;
 	
-	@Column(nullable = false)
+	@Column(name = "data_entrada", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date dataEntrada;
 	
+	@Column(name = "data_saida")
 	@Temporal(TemporalType.DATE)
 	private Date dataSaida;
 	
 	@ManyToOne
-	@JoinColumn(name="cargo_id_fk")
+	@JoinColumn(name="funcionario_cargo")
 	private Cargo cargo;
 	
 	@OneToMany(mappedBy = "funcionario")
 	private List<PontoEletronico> pontos;
+
+	@OneToOne
+	private Endereco endereco;
+	
+	@OneToOne
+	private Usuario usuario;
 
 	public Funcionario() {
 		super();
@@ -100,5 +108,19 @@ public class Funcionario extends AbstractEntity<Long> implements Serializable {
 	public void setPontos(List<PontoEletronico> pontos) {
 		this.pontos = pontos;
 	}
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
+	
+	
 }

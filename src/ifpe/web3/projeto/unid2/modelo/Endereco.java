@@ -14,7 +14,7 @@ import ifpe.web3.projeto.unid2.enums.UF;
  */
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "Enderecos")
+@Table(name = "enderecos")
 public class Endereco extends AbstractEntity<Long> {
 
 	@Column(nullable = false)
